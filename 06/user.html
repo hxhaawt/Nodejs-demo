@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <script src="www/ajax.js"></script>
+    <script>
+        window.onload = function () {
+            var oUser = document.getElementById('user');
+            var oPass = document.getElementById('pass');
+            var oRegBtn = document.getElementById('reg_btn');
+            var oLoginBtn = document.getElementById('login_btn');
+            
+            oRegBtn.onclick = function () {
+                ajax({
+                    url: 'user',
+                    data: {act: 'reg', user: oUser.value, pass: oPass.value},
+                    type: 'get',
+                    success: function (str) {
+                        var json = eval( '('+str + ')');
+                        if (json.ok){
+                            alert('注册成功')
+                        } else {
+                            alert('注册失败'+ json.msg);
+                        }
+                    },
+                    error: function(){
+
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <form>
+        用户: <input type="text" id="user">
+        <br>
+        登录: <input type="text" id="pass">
+        <br>
+        <input type="button" value="注册" id="reg_btn">
+        <input type="button" value="登录" id="login_btn">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

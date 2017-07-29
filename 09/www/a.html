@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>from-test</title>
+    <script type='text/javascript' src='ajax.js'></script>
+    <script>
+        window.onload = function () {
+            var oUser = document.getElementById('user');
+            var oPassword = document.getElementById('password');
+            var oBtn = document.getElementById('btn-login');
+
+            oBtn.onclick = function () {
+                ajax({
+                    url: '/login',
+                    data: {user: oUser.value, pass: oPassword.value},
+                    type: 'get',
+                    success: function( str ) {
+                        var json = eval( '(' + str + ')' );
+                        if (json.ok){
+                            alert('登录成功');
+                        }else {
+                            alert('登录失败' + json.msg );
+                        }
+                    },
+                    error: function () {
+                        alert('通信失败');
+                    }
+                });
+            }
+        };
+    </script>
+</head>
+<body>
+    
+    <div>
+        用户：<input type='text' id='user' /> <br>
+        密码：<input type='password' id='password' /> <br>
+        <input type='button' value='登录' id='btn-login' />
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+#.idea/
+#.idea/*
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+
+# my project files
+node_modules
+
